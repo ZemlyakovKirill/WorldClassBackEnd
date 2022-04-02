@@ -16,7 +16,8 @@ jobs:
           key: ${{ secrets.DEPLOY_SERVER_KEY }}
           port: ${{ secrets.DEPLOY_SERVER_PORT }}
           script: |
-            cd /home/world_class/WorldClassBackEnd
+            cd /home/server/WorldClassBackEnd
             git reset --hard HEAD
             git pull
+            cd /home/server
             docker-compose down
