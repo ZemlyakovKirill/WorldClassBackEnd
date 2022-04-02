@@ -1,0 +1,32 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Working with remote server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pulling
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_SERVER_HOST }}
+          username: ${{ secrets.DEPLOY_SERVER_USERNAME }}
+          key: ${{ secrets.DEPLOY_SERVER_KEY }}
+          port: ${{ secrets.DEPLOY_SERVER_PORT }}
+          script: |
+            cd /home/world_class/WorldClassBackEnd
+            git reset --hard HEAD
+            git pull
+            docker-compose down
+      - name: Running docker compose
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_SERVER_HOST }}
+          username: ${{ secrets.DEPLOY_SERVER_USERNAME }}
+          key: ${{ secrets.DEPLOY_SERVER_KEY }}
+          port: ${{ secrets.DEPLOY_SERVER_PORT }}
+          script: |
+            cd /home/world_class
+            docker-compose up
