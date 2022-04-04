@@ -36,7 +36,7 @@ public class FavouritesController extends AbstractController {
             userService.save(user);
             return responseCreated(null);
         } else {
-            return responseBad("Exercise was not found");
+            return responseBad("Упражнение не найдено");
         }
     }
 
@@ -49,9 +49,9 @@ public class FavouritesController extends AbstractController {
         if(optionalExercise.isPresent()){
             favouriteExercises.removeIf(e -> e.getId().equals(exerciseId));
             userService.save(user);
-            return responseSuccess("Deleted");
+            return responseSuccess("Удалено");
         }else{
-            return responseBad("Exercise was not found");
+            return responseBad("Упражнение не найдено");
         }
     }
 
@@ -72,7 +72,7 @@ public class FavouritesController extends AbstractController {
             userService.save(user);
             return responseCreated(null);
         } else {
-            return responseBad("Nutrition was not found");
+            return responseBad("Элемент питания не найден");
         }
     }
 
@@ -85,9 +85,9 @@ public class FavouritesController extends AbstractController {
         if(optionalExercise.isPresent()){
             favouriteNutritions.removeIf(e -> e.getId().equals(nutritionId));
             userService.save(user);
-            return responseSuccess("Deleted");
+            return responseSuccess("Удалено");
         }else{
-            return responseBad("Nutrition was not found");
+            return responseBad("Элемент питания не найден");
         }
     }
 

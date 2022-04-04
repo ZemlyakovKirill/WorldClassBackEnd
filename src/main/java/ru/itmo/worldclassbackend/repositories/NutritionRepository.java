@@ -24,7 +24,7 @@ public interface NutritionRepository extends JpaRepository<Nutrition,Long> {
 
     @Query(value = "select e.exercise_id, e.name, " +
             " (select image from exercise_images where exercise_id = ue.exercise_id limit 1) as image" +
-            " from worldclassdb.users" +
+            " from users" +
             " join user_exercises ue on users.user_id = ue.user_id" +
             " join exercises e on ue.exercise_id = e.exercise_id" +
             " where ue.user_id=:userId",nativeQuery = true)

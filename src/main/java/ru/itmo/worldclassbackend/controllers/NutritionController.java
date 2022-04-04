@@ -69,9 +69,9 @@ public class NutritionController extends AbstractController {
             nutrition.setDayOfWeek(dayOfWeek);
             nutrition.setWeight(weight);
             nutritionRepository.save(nutrition);
-            return responseSuccess("Edited");
+            return responseSuccess("Обновлено");
         } else {
-            return responseBad("Nutrition was not found");
+            return responseBad("Элемент питания не найден");
         }
     }
 
@@ -87,7 +87,7 @@ public class NutritionController extends AbstractController {
             jsonElement.getAsJsonObject().addProperty("is_favourite", optionalFavouriteNutrition.isPresent());
             return responseSuccess(jsonElement);
         } else {
-            return responseBad("Nutrition was not found");
+            return responseBad("Элемент питания не найден");
         }
     }
 
@@ -100,7 +100,7 @@ public class NutritionController extends AbstractController {
             nutritionRepository.delete(nutrition);
             return responseSuccess(nutrition);
         } else {
-            return responseBad("Deleted");
+            return responseBad("Удалено");
         }
     }
 
@@ -114,7 +114,7 @@ public class NutritionController extends AbstractController {
                     return responseBad("Image with that name already exists");
                 }
                 if (file.getOriginalFilename() == null) {
-                    return responseBad("Bad image name");
+                    return responseBad("Неверное название файла");
                 }
                 Nutrition nutrition = optionalNutrition.get();
                 byte[] bytes = file.getBytes();
@@ -126,10 +126,10 @@ public class NutritionController extends AbstractController {
                 nutritionImageRepository.save(nutritionImage);
                 return responseCreated(null);
             } else {
-                return responseBad("Image is empty");
+                return responseBad("Файл пуст");
             }
         } else {
-            return responseBad("Nutrition was not found");
+            return responseBad("Элемент питания не найден");
         }
     }
 
@@ -140,7 +140,7 @@ public class NutritionController extends AbstractController {
             Nutrition nutrition = optionalNutrition.get();
             return responseSuccess(nutrition.getImages().size());
         } else {
-            return responseBad("Nutrition was not found");
+            return responseBad("Элемент питания не найден");
         }
     }
 
@@ -158,7 +158,7 @@ public class NutritionController extends AbstractController {
             String response = new String(nutritionImage.getImage(), StandardCharsets.UTF_8);
             return responseSuccess(response);
         } else {
-            return responseBad("Nutrition was not found");
+            return responseBad("Элемент питания не найден");
         }
     }
 

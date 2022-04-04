@@ -15,8 +15,6 @@ import ru.itmo.worldclassbackend.services.UserService;
 import javax.validation.ConstraintViolationException;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 

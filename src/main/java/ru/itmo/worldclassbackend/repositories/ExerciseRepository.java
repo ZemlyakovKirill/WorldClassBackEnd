@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ru.itmo.worldclassbackend.entities.Exercise;
 import ru.itmo.worldclassbackend.entities.ExerciseCompilation;
-import ru.itmo.worldclassbackend.entities.Nutrition;
-import ru.itmo.worldclassbackend.entities.User;
 
 import java.util.List;
 import java.util.Map;

@@ -60,9 +60,9 @@ public class ExerciseController extends AbstractController {
         if(exerciseCompilation.isPresent()){
             ExerciseCompilation compilation = exerciseCompilation.get();
             exerciseCompilationRepository.delete(compilation);
-            return responseSuccess("Deleted");
+            return responseSuccess("Удалено");
         }else{
-            return responseBad("Exercise compilation was not found");
+            return responseBad("Подборка упражнений не найдена");
         }
     }
 
@@ -82,7 +82,7 @@ public class ExerciseController extends AbstractController {
             exerciseRepository.save(exercise);
             return responseCreated(null);
         }else{
-            return responseBad("Exercise compilation was not found");
+            return responseBad("Подборка упражнений не найдена");
         }
     }
 
@@ -94,7 +94,7 @@ public class ExerciseController extends AbstractController {
             List<Map<String, Object>> response = exerciseRepository.getAllByCompilation(compilationOptional.get());
             return responseSuccess(response);
         }else{
-            return responseBad("Nutrition compilation was not found");
+            return responseBad("Подборка упражнений не найдена");
         }
     }
 
@@ -110,7 +110,7 @@ public class ExerciseController extends AbstractController {
             jsonElement.getAsJsonObject().addProperty("is_favourite", optionalFavouriteExercise.isPresent());
             return responseSuccess(jsonElement);
         }else{
-            return responseBad("Exercise was not found");
+            return responseBad("Упражнение не найдено");
         }
     }
 
@@ -130,12 +130,12 @@ public class ExerciseController extends AbstractController {
                 exercise.setName(name);
                 exercise.setAdvice(advice);
                 exerciseRepository.save(exercise);
-                return responseSuccess("Edited");
+                return responseSuccess("Обновлено");
             }else{
-                return responseBad("Exercise was not found");
+                return responseBad("Упражнение не найдено");
             }
         }else{
-            return responseBad("Exercise compilation was not found");
+            return responseBad("Подборка упражнений не найдена");
         }
     }
 
@@ -148,9 +148,9 @@ public class ExerciseController extends AbstractController {
         if(exerciseOptional.isPresent()){
             Exercise exercise = exerciseOptional.get();
             exerciseRepository.delete(exercise);
-            return responseSuccess("Deleted");
+            return responseSuccess("Удалено");
         }else{
-            return responseBad("Exercise was not found");
+            return responseBad("Упражнение не найдено");
         }
     }
 
@@ -164,7 +164,7 @@ public class ExerciseController extends AbstractController {
                     return responseBad("Image with that name already exists");
                 }
                 if(file.getOriginalFilename()==null){
-                    return responseBad("Bad image name");
+                    return responseBad("Неверное название файла");
                 }
                 Exercise exercise = optionalExercise.get();
                 byte[] bytes = file.getBytes();
@@ -176,10 +176,10 @@ public class ExerciseController extends AbstractController {
                 exerciseImageRepository.save(exerciseImage);
                 return responseCreated(null);
             }else{
-                return responseBad("Image is empty");
+                return responseBad("Файл пуст");
             }
         }else{
-            return responseBad("Exercise was not found");
+            return responseBad("Упражнение не найдено");
         }
     }
 
@@ -191,7 +191,7 @@ public class ExerciseController extends AbstractController {
             List<ExerciseImage> images = exercise.getImages();
             return responseSuccess(images);
         }else{
-            return responseBad("Exercise was not found");
+            return responseBad("Упражнение не найдено");
         }
     }
 }
