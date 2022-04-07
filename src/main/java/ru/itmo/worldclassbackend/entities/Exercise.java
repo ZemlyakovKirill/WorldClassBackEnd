@@ -5,7 +5,9 @@ import com.google.gson.annotations.Expose;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -29,7 +31,8 @@ public class Exercise {
     private String name;
 
     @Expose
-    @Column(name="advice")
+    @Column(name="advice",length = 1000)
+    @Size(max = 1000,message = "Size of advice must be lower than 1000")
     @NotNull(message = "Name must be not null")
     @NonNull
     private String advice;
